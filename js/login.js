@@ -29,7 +29,7 @@ function writeUserData() {
             alert("user already signed up");
          }
       }else{
-         location.replace("/profile.html");
+         location.replace("/selfHelpApp/profile.html");
       }
    });
 }
@@ -80,7 +80,7 @@ function googleSignout() {
    firebase.auth().signOut()
    .then(function() {
       console.log('Signout Succesfull');
-      location.replace("/index.html");
+      location.replace("/selfHelpApp/index.html");
    }, function(error) {
       console.log('Signout Failed');  
    });
