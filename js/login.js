@@ -29,7 +29,7 @@ function writeUserData() {
             alert("user already signed up");
          }
       }else{
-         location.replace("http://127.0.0.1/firebase/profile.html");
+         location.replace("/profile.html");
       }
    });
 }
@@ -80,7 +80,7 @@ function googleSignout() {
    firebase.auth().signOut()
    .then(function() {
       console.log('Signout Succesfull');
-      location.replace("http://127.0.0.1/firebase/index.html");
+      location.replace("/index.html");
    }, function(error) {
       console.log('Signout Failed');  
    });

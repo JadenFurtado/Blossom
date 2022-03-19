@@ -1,6 +1,6 @@
 // Get a reference to the database service
 var database = firebase.database();
-var redirectURL = "http://127.0.0.1/firebase/login.html";
+var redirectURL = "/login.html";
 
 
 //function to add a task to the user
