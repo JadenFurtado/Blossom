@@ -31,12 +31,12 @@
             <div class="overlay">
                 <div class="overlay-panel overlay-left">
                     <h1>Blossom!</h1>
-                    <p>To keep connected with us please login with your personal info</p>
+                    <p>Already have an account?</p>
                     <button class="ghost" id="signIn">Sign In</button>
                 </div>
                 <div class="overlay-panel overlay-right">
                     <h1>Let's Blossom!</h1>
-                    <p>Enter your personal details and start journey with us</p>
+                    <p>Don't have an account? Don't worry, signup using google!</p>
                     <button class="ghost" id="signUp">Sign Up</button>
                 </div>
             </div>
@@ -56,7 +56,7 @@
 <script src="js/config.js"></script>
 <script src="js/login.js"></script>
     <script>
-replaceURL="/selfHelpApp";
+replaceURL="https://jadenfurtado.github.io/selfHelpApp";
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
