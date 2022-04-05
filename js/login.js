@@ -87,7 +87,7 @@ function googleSignout() {
    firebase.auth().signOut()
    .then(function() {
       console.log('Signout Succesfull');
-      location.replace("/selfHelpApp/index.html");
+      location.href="/selfHelpApp/index.html";
    }, function(error) {
       console.log('Signout Failed');  
    });
