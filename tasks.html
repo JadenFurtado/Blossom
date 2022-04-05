@@ -157,6 +157,24 @@ canvas {
     display: none;
   }
 }
+
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            overflow: hidden;
+        }
+
+        .scene,
+        canvas {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -180,11 +198,6 @@ canvas {
 <!------------------LIght BOx for Gallery-------------->
 <title>Application</title>
 </head>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-<script src="https://cdn.spline.design/lib/anime.min.js"></script>
-<script src="https://assets.codepen.io/9589/spline.runtime.min.js"></script>
-<script src="https://cdn.spline.design/lib/spline.runtime.min.js"></script>
 
 <body style="background-color: #c9c9c9c9;">
 
@@ -252,7 +265,7 @@ canvas {
     
     
         </nav>
-    
+        <div class="scene"></div>
 
         <!---------------------------------------------Ends navigation------------------------------>
 
@@ -556,13 +569,158 @@ canvas {
     </div>
   </div>
 </div>
-            <canvas id="canvas3d" ></canvas>
+            <!-- <canvas id="canvas3d" ></canvas>
       </div>
       <script type="text/javascript">
         const app = new SpeRuntime.Application();
       app.start("https://assets.codepen.io/9589/scene.gltf");
       
-      </script>
+      </script> -->
+      <!--testing-->
+      
+    
+    <script src="https://threejs.org/build/three.min.js"></script>
+    <script src="https://threejs.org/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://threejs.org/examples/js/loaders/DRACOLoader.js"></script>
+    <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+    <script>
+
+        //Variables for setup
+
+        let container;
+        let camera;
+        let renderer;
+        let scene;
+        let house;
+        let mixer;
+        let clips;
+        let currentlyAnimating = false;
+        let idle;
+        const clock = new THREE.Clock();
+        var raycaster = new THREE.Raycaster();
+        function init() {
+            container = document.querySelector(".scene");
+
+            //Create scene
+            scene = new THREE.Scene();
+
+            const fov = 35;
+            const aspect = container.clientWidth / container.clientHeight;
+            const near = 1;
+            const far = 10000;
+
+            //Camera setup
+            camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+            camera.position.set(0, 0, 1000);
+
+            const ambient = new THREE.AmbientLight(0x404040, 1);
+            scene.add(ambient);
+
+            const light = new THREE.DirectionalLight(0xffffff, 1);
+            light.position.set(50, 50, 100);
+            scene.add(light);
+
+            //Renderer
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.outputEncoding = THREE.sRGBEncoding;
+            container.appendChild(renderer.domElement);
+
+            const controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.target.set(0, 0.5, 0);
+            controls.update();
+            controls.enablePan = false;
+            controls.enableDamping = true;
+
+            const dracoLoader = new THREE.DRACOLoader();
+            dracoLoader.setDecoderPath('https://threejs.org/examples/js/libs/draco/gltf/');
+            //Load Model
+            let loader = new THREE.GLTFLoader();
+            loader.setDRACOLoader(dracoLoader);
+            loader.load("Breakdancer.glb", function (gltf) {
+                scene.add(gltf.scene);
+                house = gltf.scene.children[0];
+                house.scale.set(15,15,15);
+                house.position.set(0,-15,0);
+                mixer = new THREE.AnimationMixer(house);
+                mixer.clipAction(gltf.animations[0]).play();
+                clips = gltf.animations;
+                animate();
+            });
+        }
+        // function possibleAnims(){
+        //     let clip = THREE.AnimationClip.findByName(clips, val.name);
+        //     clip = mixer.clipAction(clip);
+        //     return clip;
+        // }
+        function animate() {
+            requestAnimationFrame(animate);
+
+            const delta = clock.getDelta();
+            mixer.update(delta);
+            renderer.render(scene, camera);
+        }
+
+        init();
+
+        function onWindowResize() {
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        }
+
+        window.addEventListener("resize", onWindowResize);
+
+
+        //modified code
+        window.addEventListener('click', e => raycast(e));
+window.addEventListener('touchend', e => raycast(e, true));
+
+function raycast(e, touch = false) {
+  var mouse = {};
+  if (touch) {
+    mouse.x = 2 * (e.changedTouches[0].clientX / window.innerWidth) - 1;
+    mouse.y = 1 - 2 * (e.changedTouches[0].clientY / window.innerHeight);
+  } else {
+    mouse.x = 2 * (e.clientX / window.innerWidth) - 1;
+    mouse.y = 1 - 2 * (e.clientY / window.innerHeight);
+  }
+  // update the picking ray with the camera and mouse position
+  raycaster.setFromCamera(mouse, camera);
+
+  // calculate objects intersecting the picking ray
+  var intersects = raycaster.intersectObjects(scene.children, true);
+
+  if (intersects[0]) {
+    console.log("intersects");
+    var object = intersects[0].object;
+    if (!currentlyAnimating) {
+            var duration = 1;
+            mixer.clipAction(clips[0]).fadeOut( duration );
+            let number = Math.floor((Math.random() * 10) + 1);
+            number = number%3+1;
+            mixer.clipAction(clips[number]).stop().setEffectiveTimeScale( 1 ).setEffectiveWeight( 1 ).fadeIn( duration ).play();
+    //        let number = Math.floor((Math.random() * 10) + 1);
+            setTimeout(function (){
+            mixer.clipAction(clips[number]).fadeOut( duration );
+            mixer.clipAction(clips[0]).stop().setEffectiveTimeScale( 1 ).setEffectiveWeight( 1 ).fadeIn( duration ).play();
+            }, 4000);
+        }
+    }
+}
+
+
+
+// Get a random animation, and play it 
+
+    </script>
+      <!--ending-->
       <script type="text/javascript">
           $( document ).ready(function() {
           
