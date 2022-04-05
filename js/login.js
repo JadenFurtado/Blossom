@@ -53,7 +53,14 @@ function googleSignin() {
    .signInWithPopup(provider).then(function(result) {
       firebase.auth().currentUser.getIdToken(true).then(function(idToken) {
          var user = firebase.auth().currentUser;
-         var userExists = checkUserExists(user);
+         if(checkUserExists(user)!=true){
+            firebase.database().ref('users/' + user.uid).set({
+            username: user.displayName,
+            email: user.email,
+            profile_picture : user.photoURL
+            });
+         }
+         //var userExists = checkUserExists(user);
          /*
          if(userExists!=true){
             firebase.auth().signOut();
