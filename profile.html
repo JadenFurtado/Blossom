@@ -6,192 +6,192 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <style>
-        /* styles for the list */
-        
-.buttonContainer {
-  height: 5vh;
-  position: relative;
-}
-
-.center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
-.todo-nav {
-    margin-top: 10px
-}
-
-.todo-list {
-    margin: 10px 0
-}
-
-.todo-list .todo-item {
-    padding: 15px;
-    margin: 5px 0;
-    border-radius: 0;
-    background: #f7f7f7
-}
-
-.todo-list.only-active .todo-item.complete {
-    display: none
-}
-
-.todo-list.only-active .todo-item:not(.complete) {
-    display: block
-}
-
-.todo-list.only-complete .todo-item:not(.complete) {
-    display: none
-}
-
-.todo-list.only-complete .todo-item.complete {
-    display: block
-}
-
-.todo-list .todo-item.complete span {
-    text-decoration: line-through
-}
-
-.remove-todo-item {
-    color: #ccc;
-    visibility: hidden
-}
-
-.remove-todo-item:hover {
-    color: #5f5f5f
-}
-
-.todo-item:hover .remove-todo-item {
-    visibility: visible
-}
-
-div.checker {
-    width: 18px;
-    height: 18px
-}
-
-div.checker input,
-div.checker span {
-    width: 18px;
-    height: 18px
-}
-
-div.checker span {
-    display: -moz-inline-box;
-    display: inline-block;
-    zoom: 1;
-    text-align: center;
-    background-position: 0 -260px;
-}
-
-div.checker, div.checker input, div.checker span {
-    width: 19px;
-    height: 19px;
-}
-
-div.checker, div.radio, div.uploader {
+            /* styles for the list */
+            
+    .buttonContainer {
+    height: 5vh;
     position: relative;
-}
+    }
 
-div.button, div.button *, div.checker, div.checker *, div.radio, div.radio *, div.selector, div.selector *, div.uploader, div.uploader * {
+    .center {
     margin: 0;
-    padding: 0;
-}
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    }
 
-div.button, div.checker, div.radio, div.selector, div.uploader {
-    display: -moz-inline-box;
-    display: inline-block;
-    zoom: 1;
-    vertical-align: middle;
-}
+    .todo-nav {
+        margin-top: 10px
+    }
 
-.card {
-    padding: 25px;
-    margin-bottom: 20px;
-    border: initial;
-    background: #fff;
-    border-radius: calc(.15rem - 1px);
-    box-shadow: 0 1px 15px rgba(0,0,0,0.04), 0 1px 6px rgba(0,0,0,0.04);
-}
+    .todo-list {
+        margin: 10px 0
+    }
+
+    .todo-list .todo-item {
+        padding: 15px;
+        margin: 5px 0;
+        border-radius: 0;
+        background: #f7f7f7
+    }
+
+    .todo-list.only-active .todo-item.complete {
+        display: none
+    }
+
+    .todo-list.only-active .todo-item:not(.complete) {
+        display: block
+    }
+
+    .todo-list.only-complete .todo-item:not(.complete) {
+        display: none
+    }
+
+    .todo-list.only-complete .todo-item.complete {
+        display: block
+    }
+
+    .todo-list .todo-item.complete span {
+        text-decoration: line-through
+    }
+
+    .remove-todo-item {
+        color: #ccc;
+        visibility: hidden
+    }
+
+    .remove-todo-item:hover {
+        color: #5f5f5f
+    }
+
+    .todo-item:hover .remove-todo-item {
+        visibility: visible
+    }
+
+    div.checker {
+        width: 18px;
+        height: 18px
+    }
+
+    div.checker input,
+    div.checker span {
+        width: 18px;
+        height: 18px
+    }
+
+    div.checker span {
+        display: -moz-inline-box;
+        display: inline-block;
+        zoom: 1;
+        text-align: center;
+        background-position: 0 -260px;
+    }
+
+    div.checker, div.checker input, div.checker span {
+        width: 19px;
+        height: 19px;
+    }
+
+    div.checker, div.radio, div.uploader {
+        position: relative;
+    }
+
+    div.button, div.button *, div.checker, div.checker *, div.radio, div.radio *, div.selector, div.selector *, div.uploader, div.uploader * {
+        margin: 0;
+        padding: 0;
+    }
+
+    div.button, div.checker, div.radio, div.selector, div.uploader {
+        display: -moz-inline-box;
+        display: inline-block;
+        zoom: 1;
+        vertical-align: middle;
+    }
+
+    .card {
+        padding: 25px;
+        margin-bottom: 20px;
+        border: initial;
+        background: #fff;
+        border-radius: calc(.15rem - 1px);
+        box-shadow: 0 1px 15px rgba(0,0,0,0.04), 0 1px 6px rgba(0,0,0,0.04);
+    }
 
 
-canvas {
-  width: 100%;
-  height: 100%;
-  outline: none;
-}
-#container {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
+    canvas {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    }
+    #container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    }
 
-.spline-watermark {
-  position: absolute;
-  bottom: 16px;
-  right: 16px;
-  width: 32px;
-  height: 32px;
-  z-index: 2;
-}
+    .spline-watermark {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    z-index: 2;
+    }
 
-.spline-watermark:hover {
-  opacity: 0.8;
-}
+    .spline-watermark:hover {
+    opacity: 0.8;
+    }
 
-.spline-watermark img {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
+    .spline-watermark img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    }
 
-@media screen and (max-width: 780px) {
-  #taskList {
-    background-color: lightgreen;
-    display: none;
-  }
-}
+    @media screen and (max-width: 780px) {
+    #taskList {
+        background-color: lightgreen;
+        display: none;
+    }
+    }
 
-* {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
 
-        body {
-            font-family: sans-serif;
-            overflow: hidden;
-        }
+            body {
+                font-family: sans-serif;
+                overflow: hidden;
+            }
 
-        .scene,
-        canvas {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-        /* end of the styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+            .scene,
+            canvas {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+            /* end of the styles */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
 
-        body {
-            font-family: sans-serif;
-            overflow: hidden;
-        }
+            body {
+                font-family: sans-serif;
+                overflow: hidden;
+            }
 
-        .scene,
-        canvas {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
+            .scene,
+            canvas {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
     </style>
 
 </head>
@@ -202,105 +202,102 @@ canvas {
     <div class="scene"></div>
     <div style="position: fixed;left: 0;bottom: 0; width: 100%; text-align: center; padding-bottom: 5px;">
         <!-- Default dropup button -->
-<div class="btn-group dropup">
-    <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Options
-    </button>
-    <div class="dropdown-menu">
-      <!-- Dropdown menu links -->
-        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat"">My Tasks</a>
-        <a class="dropdown-item" href="#">Logout</a>
-    </div>
-  </div>
-  <!-- modal code starts here -->
-  
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" data-backdrop="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+        <div class="btn-group dropup">
+            <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Options
+            </button>
+            <div class="dropdown-menu">
+            <!-- Dropdown menu links -->
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat"">My Tasks</a>
+                <a class="dropdown-item" href="#">Logout</a>
+            </div>
         </div>
-        <div class="modal-body">
-          <div class="container-fluid">
-              <div class="row">
-                  <div class="col-md-12">
-                      <div class="card card-white">
-                          <div class="card-body">
-                              <form action="javascript:void(0);">
-                                  <input type="text" class="form-control add-task" placeholder="New Task...">
-                              </form>
-                              <ul class="nav nav-pills todo-nav">
-                                  <li role="presentation" class="nav-item all-task active"><a href="#" class="nav-link">All</a></li>
-                                  <li role="presentation" class="nav-item active-task"><a href="#" class="nav-link">Active</a></li>
-                                  <li role="presentation" class="nav-item completed-task"><a href="#" class="nav-link">Completed</a></li>
-                              </ul>
-                              <div class="todo-list">
-                                  <div class="todo-item">
-                                      <div class="checker"><span class=""><input type="checkbox"></span></div>
-                                      <span>write 10-15 lines in journal</span>
-                                      <a href="javascript:void(0);" class="float-right remove-todo-item"><i class="icon-close"></i></a>
-                                  </div>
-                                  <div class="todo-item">
-                                      <div class="checker"><span class=""><input type="checkbox"></span></div>
-                                      <span>meditate for 10 mins</span>
-                                      <a href="javascript:void(0);" class="float-right remove-todo-item"><i class="icon-close"></i></a>
-                                  </div>
-                                  
-                                  <div class="todo-item">
-                                      <div class="checker"><span class=""><input type="checkbox"></span></div>
-                                      <span>go for a walk/30 mins walk</span>
-                                      <a href="javascript:void(0);" class="float-right remove-todo-item"><i class="icon-close"></i></a>
-                                  </div>
-                                  <div class="todo-item">
-                                      <div class="checker"><span><input type="checkbox"></span></div>
-                                      <span>breating excercises for 5 mins</span>
-                                      <a href="javascript:void(0);" class="float-right remove-todo-item"><i class="icon-close"></i></a>
-                                  </div>
-                                  <div class="todo-item">
-                                      <div class="checker"><span><input type="checkbox"></span></div>
-                                      <span>list goals to be achieved by end of the week</span>
-                                      <a href="javascript:void(0);" class="float-right remove-todo-item"><i class="icon-close"></i></a>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              </div>
+        <!-- modal code starts here -->
+        
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" data-backdrop="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card card-white">
+                                        <div class="card-body">
+                                            <form action="javascript:void(0);">
+                                                <input type="text" class="form-control add-task" placeholder="New Task...">
+                                            </form>
+                                            <ul class="nav nav-pills todo-nav">
+                                                <li role="presentation" class="nav-item all-task active"><a href="#" class="nav-link">All</a></li>
+                                                <li role="presentation" class="nav-item active-task"><a href="#" class="nav-link">Active</a></li>
+                                                <li role="presentation" class="nav-item completed-task"><a href="#" class="nav-link">Completed</a></li>
+                                            </ul>
+                                            <div class="todo-list">
+                                                <div class="todo-item">
+                                                    <div class="checker"><span class=""><input type="checkbox"></span></div>
+                                                    <span>write 10-15 lines in journal</span>
+                                                    <a href="javascript:void(0);" class="float-right remove-todo-item"><i class="icon-close"></i></a>
+                                                </div>
+                                                <div class="todo-item">
+                                                    <div class="checker"><span class=""><input type="checkbox"></span></div>
+                                                    <span>meditate for 10 mins</span>
+                                                    <a href="javascript:void(0);" class="float-right remove-todo-item"><i class="icon-close"></i></a>
+                                                </div>
+                                                
+                                                <div class="todo-item">
+                                                    <div class="checker"><span class=""><input type="checkbox"></span></div>
+                                                    <span>go for a walk/30 mins walk</span>
+                                                    <a href="javascript:void(0);" class="float-right remove-todo-item"><i class="icon-close"></i></a>
+                                                </div>
+                                                <div class="todo-item">
+                                                    <div class="checker"><span><input type="checkbox"></span></div>
+                                                    <span>breating excercises for 5 mins</span>
+                                                    <a href="javascript:void(0);" class="float-right remove-todo-item"><i class="icon-close"></i></a>
+                                                </div>
+                                                <div class="todo-item">
+                                                    <div class="checker"><span><input type="checkbox"></span></div>
+                                                    <span>list goals to be achieved by end of the week</span>
+                                                    <a href="javascript:void(0);" class="float-right remove-todo-item"><i class="icon-close"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- Split dropup button -
+        <div class="btn-group dropup">
+            <button type="button" class="btn btn-secondary">
+            Split dropup
+            </button>
+            <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="sr-only">Options</span>
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Logout</a>
+            !-- Dropdown menu links --
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <!-- Split dropup button -
-  <div class="btn-group dropup">
-    <button type="button" class="btn btn-secondary">
-      Split dropup
-    </button>
-    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <span class="sr-only">Options</span>
-    </button>
-    <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Logout</a>
-      !-- Dropdown menu links --
-    </div>
-  </div>
--->
-    </div>
+        -->
+        </div>
     
     <script src="https://threejs.org/build/three.min.js"></script>
     <script src="https://threejs.org/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://threejs.org/examples/js/loaders/DRACOLoader.js"></script>
     <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
-    <script
-  src="https://code.jquery.com/jquery-3.6.0.js"
-  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-  crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script>
 
         //Variables for setup
@@ -395,45 +392,40 @@ canvas {
 
         //modified code
         window.addEventListener('click', e => raycast(e));
-window.addEventListener('touchend', e => raycast(e, true));
+        window.addEventListener('touchend', e => raycast(e, true));
 
 function raycast(e, touch = false) {
-  var mouse = {};
-  if (touch) {
-    mouse.x = 2 * (e.changedTouches[0].clientX / window.innerWidth) - 1;
-    mouse.y = 1 - 2 * (e.changedTouches[0].clientY / window.innerHeight);
-  } else {
-    mouse.x = 2 * (e.clientX / window.innerWidth) - 1;
-    mouse.y = 1 - 2 * (e.clientY / window.innerHeight);
-  }
+    var mouse = {};
+    if (touch) {
+        mouse.x = 2 * (e.changedTouches[0].clientX / window.innerWidth) - 1;
+        mouse.y = 1 - 2 * (e.changedTouches[0].clientY / window.innerHeight);
+    } else {
+        mouse.x = 2 * (e.clientX / window.innerWidth) - 1;
+        mouse.y = 1 - 2 * (e.clientY / window.innerHeight);
+    }
   // update the picking ray with the camera and mouse position
-  raycaster.setFromCamera(mouse, camera);
+    raycaster.setFromCamera(mouse, camera);
 
-  // calculate objects intersecting the picking ray
-  var intersects = raycaster.intersectObjects(scene.children, true);
+    // calculate objects intersecting the picking ray
+    var intersects = raycaster.intersectObjects(scene.children, true);
 
-  if (intersects[0]) {
-    console.log("intersects");
-    var object = intersects[0].object;
-    if (!currentlyAnimating) {
-            var duration = 1;
-            mixer.clipAction(clips[0]).fadeOut( duration );
-            let number = Math.floor((Math.random() * 10) + 1);
-            number = number%3+1;
-            mixer.clipAction(clips[number]).stop().setEffectiveTimeScale( 1 ).setEffectiveWeight( 1 ).fadeIn( duration ).play();
-    //        let number = Math.floor((Math.random() * 10) + 1);
-            setTimeout(function (){
-            mixer.clipAction(clips[number]).fadeOut( duration );
-            mixer.clipAction(clips[0]).stop().setEffectiveTimeScale( 1 ).setEffectiveWeight( 1 ).fadeIn( duration ).play();
+    if (intersects[0]) {
+        console.log("intersects");
+        var object = intersects[0].object;
+        if (!currentlyAnimating) {
+                var duration = 1;
+                mixer.clipAction(clips[0]).fadeOut( duration );
+                let number = Math.floor((Math.random() * 10) + 1);
+                number = number%3+1;
+                mixer.clipAction(clips[number]).stop().setEffectiveTimeScale( 1 ).setEffectiveWeight( 1 ).fadeIn( duration ).play();
+        //        let number = Math.floor((Math.random() * 10) + 1);
+                setTimeout(function (){
+                mixer.clipAction(clips[number]).fadeOut( duration );
+                mixer.clipAction(clips[0]).stop().setEffectiveTimeScale( 1 ).setEffectiveWeight( 1 ).fadeIn( duration ).play();
             }, 4000);
         }
     }
 }
-
-
-
-// Get a random animation, and play it 
-
     </script>
     <!-- scripts here -->
     <!-- for the task lists -->
