@@ -1,337 +1,513 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+        /* styles for the list */
+        
+.buttonContainer {
+  height: 5vh;
+  position: relative;
+}
 
-<!------------------LIght BOx for Gallery-------------->
-<link rel="stylesheet" href="lightbox.min.css">
-<script type="text/javascript" src="lightbox-plus-jquery.min.js"></script>
-<!------------------LIght BOx for Gallery-------------->
-<title>Application</title>
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.todo-nav {
+    margin-top: 10px
+}
+
+.todo-list {
+    margin: 10px 0
+}
+
+.todo-list .todo-item {
+    padding: 15px;
+    margin: 5px 0;
+    border-radius: 0;
+    background: #f7f7f7
+}
+
+.todo-list.only-active .todo-item.complete {
+    display: none
+}
+
+.todo-list.only-active .todo-item:not(.complete) {
+    display: block
+}
+
+.todo-list.only-complete .todo-item:not(.complete) {
+    display: none
+}
+
+.todo-list.only-complete .todo-item.complete {
+    display: block
+}
+
+.todo-list .todo-item.complete span {
+    text-decoration: line-through
+}
+
+.remove-todo-item {
+    color: #ccc;
+    visibility: hidden
+}
+
+.remove-todo-item:hover {
+    color: #5f5f5f
+}
+
+.todo-item:hover .remove-todo-item {
+    visibility: visible
+}
+
+div.checker {
+    width: 18px;
+    height: 18px
+}
+
+div.checker input,
+div.checker span {
+    width: 18px;
+    height: 18px
+}
+
+div.checker span {
+    display: -moz-inline-box;
+    display: inline-block;
+    zoom: 1;
+    text-align: center;
+    background-position: 0 -260px;
+}
+
+div.checker, div.checker input, div.checker span {
+    width: 19px;
+    height: 19px;
+}
+
+div.checker, div.radio, div.uploader {
+    position: relative;
+}
+
+div.button, div.button *, div.checker, div.checker *, div.radio, div.radio *, div.selector, div.selector *, div.uploader, div.uploader * {
+    margin: 0;
+    padding: 0;
+}
+
+div.button, div.checker, div.radio, div.selector, div.uploader {
+    display: -moz-inline-box;
+    display: inline-block;
+    zoom: 1;
+    vertical-align: middle;
+}
+
+.card {
+    padding: 25px;
+    margin-bottom: 20px;
+    border: initial;
+    background: #fff;
+    border-radius: calc(.15rem - 1px);
+    box-shadow: 0 1px 15px rgba(0,0,0,0.04), 0 1px 6px rgba(0,0,0,0.04);
+}
+
+
+canvas {
+  width: 100%;
+  height: 100%;
+  outline: none;
+}
+#container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.spline-watermark {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  z-index: 2;
+}
+
+.spline-watermark:hover {
+  opacity: 0.8;
+}
+
+.spline-watermark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 780px) {
+  #taskList {
+    background-color: lightgreen;
+    display: none;
+  }
+}
+
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            overflow: hidden;
+        }
+
+        .scene,
+        canvas {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        /* end of the styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            overflow: hidden;
+        }
+
+        .scene,
+        canvas {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
 </head>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <body>
-
-    <!-------------------------------NAvigation Starts------------------>
-
-    <nav class="navbar navbar-expand-md navbar-dark" style="background-color:#3097D1">
-            <a href="index.html" class="navbar-brand"><img src="img/brand-white.png" alt="logo" class="img-fluid" width="80px" height="100px"></a>
     
-            <button class="navbar-toggler" data-toggle="collapse" data-target="#responsive"><span class="navbar-toggler-icon"></span></button>
-    
-    
-            <div class="collapse navbar-collapse" id="responsive">
-                <ul class="navbar-nav mr-auto text-capitalize">
-                    <li class="nav-item"><a href="index.html" class="nav-link">home</a></li>
-                    <li class="nav-item"><a href="profile.html" class="nav-link active">profile</a></li>
-                    <li class="nav-item"><a href="#modalview" data-toggle="modal" class="nav-link">messages</a></li>
-                    <li class="nav-item"><a href="notification.html" class="nav-link">notifications</a></li>
-                    <!-- <li class="nav-item"><a href="#" class="nav-link d-md-none">growl</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link d-md-none">logout</a></li> -->
-    
-                </ul>
-    
-                <form action="" class="form-inline ml-auto d-none d-md-block">
-                    <input type="text" name="search" id="search" placeholder="Search" class="form-control form-control-sm">
-                </form>
-                <a href="notification.html" class="text-decoration-none" style="color:#CBE4F2;font-size:22px;"><i class="far fa-bell ml-3 d-none d-md-block"></i></a> 
-                <a href="#modallogout" data-toggle="modal"><img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg" alt="" class="rounded-circle ml-3 d-none d-md-block" width="32px" height="32px" id="profileImage"></a>
-    
-                <div class="modal" id="modallogout" tabindex="-1" role="dialog">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">CodeXplorers</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Do you want to logout?</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" onclick="googleSignout()">Log Out</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-    
-    
-    
-            </div>
-    
-    
-    
-    
-        </nav>
-    
-
-        <!---------------------------------------------Ends navigation------------------------------>
-
-        <!---------------------------MOdal Section  satrts------------------->
-
-    <div class="modal fade" id="modalview" >
-            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
-    
-                <div class="modal-content">
-    
-    
-                    <div class="modal-header">
-                        <div class="modal-title h4">Messages</div>
-    
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-    
-    
-                    <div class="modal-body">
-    
-    
-                        <ul class="list-unstyled">
-    
-    
-                         <a href="#" class="text-decoration-none">
-                            <li class="media hover-media">
-                               
-                                    <img src="img/avatar-dhg.png" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
-    
-                                    <div class="media-body text-dark">
-                                            <h6 class="media-header">Jchob Thunder and <strong> 1 others</strong></h6>
-                                            <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-    
-                                    </div>
-    
-                            </li>
-                        </a>
-                        <hr class="my-3">
-    
-    
-                        
-                        <a href="#" class="text-decoration-none">
-                                <li class="media hover-media">
-                                   
-                                        <img src="img/avatar-fat.jpg" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
-        
-                                        <div class="media-body text-dark">
-                                                <h6 class="media-header">Mark Otto and <strong> 3 others</strong></h6>
-                                                <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        
-                                        </div>
-        
-                                </li>
-                            </a>
-    
-    
-                            <hr class="my-3">
-    
-    
-                            <a href="#" class="text-decoration-none">
-                                <li class="media hover-media">
-                                   
-                                        <img src="img/avatar-mdo.png" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
-        
-                                        <div class="media-body text-dark">
-                                                <h6 class="media-header">Archer andu and <strong> 5 others</strong></h6>
-                                                <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        
-                                        </div>
-        
-                                </li>
-                            </a>
-    
-                            <hr class="my-3">
-    
-    
-                            <a href="#" class="text-decoration-none">
-                                    <li class="media hover-media">
-                                       
-                                            <img src="img/avatar-dhg.png" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
-            
-                                            <div class="media-body text-dark">
-                                                    <h6 class="media-header">Jchob Thunder and <strong> 1 others</strong></h6>
-                                                    <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            
-                                            </div>
-            
-                                    </li>
-                                </a>
-                                <hr class="my-3">
-            
-            
-                                
-                                <a href="#" class="text-decoration-none">
-                                        <li class="media hover-media">
-                                           
-                                                <img src="img/avatar-fat.jpg" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
-                
-                                                <div class="media-body text-dark">
-                                                        <h6 class="media-header">Mark Otto and <strong> 3 others</strong></h6>
-                                                        <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                
-                                                </div>
-                
-                                        </li>
-                                    </a>
-            
-            
-                                    <hr class="my-3">
-            
-            
-                                    <a href="#" class="text-decoration-none">
-                                        <li class="media hover-media">
-                                           
-                                                <img src="img/avatar-mdo.png" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
-                
-                                                <div class="media-body text-dark">
-                                                        <h6 class="media-header">Archer andu and <strong> 5 others</strong></h6>
-                                                        <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                
-                                                </div>
-                
-                                        </li>
-                                    </a>
-    
-                            
-                                    <hr class="my-3">
-                                    <a href="#" class="text-decoration-none">
-                                            <li class="media hover-media">
-                                               
-                                                    <img src="img/avatar-dhg.png" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
-                    
-                                                    <div class="media-body text-dark">
-                                                            <h6 class="media-header">Jchob Thunder and <strong> 1 others</strong></h6>
-                                                            <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    
-                                                    </div>
-                    
-                                            </li>
-                                        </a>
-                                        <hr class="my-3">
-                    
-                    
-                                        
-                                        <a href="#" class="text-decoration-none">
-                                                <li class="media hover-media">
-                                                   
-                                                        <img src="img/avatar-fat.jpg" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
-                        
-                                                        <div class="media-body text-dark">
-                                                                <h6 class="media-header">Mark Otto and <strong> 3 others</strong></h6>
-                                                                <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        
-                                                        </div>
-                        
-                                                </li>
-                                            </a>
-                    
-                    
-                                            <hr class="my-3">
-                    
-                    
-                                            <a href="#" class="text-decoration-none">
-                                                <li class="media hover-media">
-                                                   
-                                                        <img src="img/avatar-mdo.png" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
-                        
-                                                        <div class="media-body text-dark">
-                                                                <h6 class="media-header">Archer andu and <strong> 5 others</strong></h6>
-                                                                <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        
-                                                        </div>
-                        
-                                                </li>
-                                            </a> 
-                        </ul>                    
-    
-                    </div>
-                </div>
-    
-    
-            </div>
-    
-    
+    <div class="scene"></div>
+    <div style="position: fixed;left: 0;bottom: 0; width: 100%; text-align: center; padding-bottom: 5px;">
+        <!-- Default dropup button -->
+<div class="btn-group dropup">
+    <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Options
+    </button>
+    <div class="dropdown-menu">
+      <!-- Dropdown menu links -->
+        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat"">My Tasks</a>
+        <a class="dropdown-item" href="#">Logout</a>
+    </div>
+  </div>
+  <!-- modal code starts here -->
+  
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" data-backdrop="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-    
-        <!-------------------------------MOdal Ends---------------------------->
-    
-
-        <!-----------------------------------Banner/img Starts-------------------->
-
-        <div class="banner">
-            <div class="banner-title d-flex flex-column justify-content-center align-items-center" id="profileData">
-                <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg" id="profileImage1" alt="img" class="rounded-circle" width="80px" height="80px">
-                <h3 class="text-light" id="profileName1">Anushree Dutt</h3>
-            </div>
-
-
-            <div class="banner-end d-flex justify-content-center align-items-end" id="lower_banner">
-                <ul class="nav text-light">
-                    <li class="nav-item nav-link"><a href="tasks.html" class="text-decoration-none">Tasks</a></li>
-                    <!--
-                    <li class="nav-item nav-link"><a href="#" class="text-decoration-none">GitHub</a></li>
-                    <li class="nav-item nav-link"><a href="#" class="text-decoration-none">LinkedIn</a></li>
-                    <li class="nav-item nav-link"><a href="#modal-addpost" data-toggle="modal" class="text-decoration-none"><i class="fa fa-plus"></i></a></li>                   
-                    -->
-                </ul>
-
-            </div>
-            <div class="modal" id="modal-addpost" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Do you want to add post?</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary"><input type="file" id="myFile" /></button>
-                        <button type="button" class="btn btn-secondary"  onclick="fileUpload()">Upload</button>
-                    </div>
-                    </div>
-                </div>
-                </div>
-
-
-            
-
+        <div class="modal-body">
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="card card-white">
+                          <div class="card-body">
+                              <form action="javascript:void(0);">
+                                  <input type="text" class="form-control add-task" placeholder="New Task...">
+                              </form>
+                              <ul class="nav nav-pills todo-nav">
+                                  <li role="presentation" class="nav-item all-task active"><a href="#" class="nav-link">All</a></li>
+                                  <li role="presentation" class="nav-item active-task"><a href="#" class="nav-link">Active</a></li>
+                                  <li role="presentation" class="nav-item completed-task"><a href="#" class="nav-link">Completed</a></li>
+                              </ul>
+                              <div class="todo-list">
+                                  <div class="todo-item">
+                                      <div class="checker"><span class=""><input type="checkbox"></span></div>
+                                      <span>write 10-15 lines in journal</span>
+                                      <a href="javascript:void(0);" class="float-right remove-todo-item"><i class="icon-close"></i></a>
+                                  </div>
+                                  <div class="todo-item">
+                                      <div class="checker"><span class=""><input type="checkbox"></span></div>
+                                      <span>meditate for 10 mins</span>
+                                      <a href="javascript:void(0);" class="float-right remove-todo-item"><i class="icon-close"></i></a>
+                                  </div>
+                                  
+                                  <div class="todo-item">
+                                      <div class="checker"><span class=""><input type="checkbox"></span></div>
+                                      <span>go for a walk/30 mins walk</span>
+                                      <a href="javascript:void(0);" class="float-right remove-todo-item"><i class="icon-close"></i></a>
+                                  </div>
+                                  <div class="todo-item">
+                                      <div class="checker"><span><input type="checkbox"></span></div>
+                                      <span>breating excercises for 5 mins</span>
+                                      <a href="javascript:void(0);" class="float-right remove-todo-item"><i class="icon-close"></i></a>
+                                  </div>
+                                  <div class="todo-item">
+                                      <div class="checker"><span><input type="checkbox"></span></div>
+                                      <span>list goals to be achieved by end of the week</span>
+                                      <a href="javascript:void(0);" class="float-right remove-todo-item"><i class="icon-close"></i></a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              </div>
         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Split dropup button -
+  <div class="btn-group dropup">
+    <button type="button" class="btn btn-secondary">
+      Split dropup
+    </button>
+    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="sr-only">Options</span>
+    </button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Logout</a>
+      !-- Dropdown menu links --
+    </div>
+  </div>
+-->
+    </div>
+    
+    <script src="https://threejs.org/build/three.min.js"></script>
+    <script src="https://threejs.org/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://threejs.org/examples/js/loaders/DRACOLoader.js"></script>
+    <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+    <script>
 
-        <!--------------------Image Portfolio----------------->
+        //Variables for setup
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        let container;
+        let camera;
+        let renderer;
+        let scene;
+        let house;
+        let mixer;
+        let clips;
+        let currentlyAnimating = false;
+        let idle;
+        const clock = new THREE.Clock();
+        var raycaster = new THREE.Raycaster();
+        function init() {
+            container = document.querySelector(".scene");
 
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-analytics.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-<script src="js/config.js"></script>
-<script src="js/login.js"></script>
-<script>
-    firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    var uid = user.uid;
-    console.log(user);
-    document.getElementById('profileImage').src=user.photoURL;
-    document.getElementById('profileImage1').src=user.photoURL;
-    document.getElementById("profileName1").innerText=user.displayName;
+            //Create scene
+            scene = new THREE.Scene();
+
+            const fov = 35;
+            const aspect = container.clientWidth / container.clientHeight;
+            const near = 1;
+            const far = 10000;
+
+            //Camera setup
+            camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+            camera.position.set(0, 0, 1000);
+
+            const ambient = new THREE.AmbientLight(0x404040, 1);
+            scene.add(ambient);
+
+            const light = new THREE.DirectionalLight(0xffffff, 1);
+            light.position.set(50, 50, 100);
+            scene.add(light);
+
+            //Renderer
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.outputEncoding = THREE.sRGBEncoding;
+            container.appendChild(renderer.domElement);
+
+            const controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.target.set(0, 0.5, 0);
+            controls.update();
+            controls.enablePan = false;
+            controls.enableDamping = true;
+
+            const dracoLoader = new THREE.DRACOLoader();
+            dracoLoader.setDecoderPath('https://threejs.org/examples/js/libs/draco/gltf/');
+            //Load Model
+            let loader = new THREE.GLTFLoader();
+            loader.setDRACOLoader(dracoLoader);
+            loader.load("Breakdancer.glb", function (gltf) {
+                scene.add(gltf.scene);
+                house = gltf.scene.children[0];
+                house.scale.set(15,15,15);
+                house.position.y=-100;
+                console.log(house.position);
+                mixer = new THREE.AnimationMixer(house);
+                mixer.clipAction(gltf.animations[0]).play();
+                clips = gltf.animations;
+                animate();
+            });
+        }
+        // function possibleAnims(){
+        //     let clip = THREE.AnimationClip.findByName(clips, val.name);
+        //     clip = mixer.clipAction(clip);
+        //     return clip;
+        // }
+        function animate() {
+            requestAnimationFrame(animate);
+
+            const delta = clock.getDelta();
+            mixer.update(delta);
+            renderer.render(scene, camera);
+        }
+
+        init();
+
+        function onWindowResize() {
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        }
+
+        window.addEventListener("resize", onWindowResize);
+
+
+        //modified code
+        window.addEventListener('click', e => raycast(e));
+window.addEventListener('touchend', e => raycast(e, true));
+
+function raycast(e, touch = false) {
+  var mouse = {};
+  if (touch) {
+    mouse.x = 2 * (e.changedTouches[0].clientX / window.innerWidth) - 1;
+    mouse.y = 1 - 2 * (e.changedTouches[0].clientY / window.innerHeight);
   } else {
-      alert("please login or signup");
-      location.replace("https://jadenfurtado.github.io/selfHelpApp/");
-   }
-});
-</script>
+    mouse.x = 2 * (e.clientX / window.innerWidth) - 1;
+    mouse.y = 1 - 2 * (e.clientY / window.innerHeight);
+  }
+  // update the picking ray with the camera and mouse position
+  raycaster.setFromCamera(mouse, camera);
+
+  // calculate objects intersecting the picking ray
+  var intersects = raycaster.intersectObjects(scene.children, true);
+
+  if (intersects[0]) {
+    console.log("intersects");
+    var object = intersects[0].object;
+    if (!currentlyAnimating) {
+            var duration = 1;
+            mixer.clipAction(clips[0]).fadeOut( duration );
+            let number = Math.floor((Math.random() * 10) + 1);
+            number = number%3+1;
+            mixer.clipAction(clips[number]).stop().setEffectiveTimeScale( 1 ).setEffectiveWeight( 1 ).fadeIn( duration ).play();
+    //        let number = Math.floor((Math.random() * 10) + 1);
+            setTimeout(function (){
+            mixer.clipAction(clips[number]).fadeOut( duration );
+            mixer.clipAction(clips[0]).stop().setEffectiveTimeScale( 1 ).setEffectiveWeight( 1 ).fadeIn( duration ).play();
+            }, 4000);
+        }
+    }
+}
+
+
+
+// Get a random animation, and play it 
+
+    </script>
+    <!-- scripts here -->
+    <!-- for the task lists -->
+    <script type="text/javascript">
+        $( document ).ready(function() {
+        
+        "use strict";
+        
+        var todo = function() { 
+            $('.todo-list .todo-item input').click(function() {
+            if($(this).is(':checked')) {
+                $(this).parent().parent().parent().toggleClass('complete');
+            } else {
+                $(this).parent().parent().parent().toggleClass('complete');
+            }
+        });
+        
+        $('.todo-nav .all-task').click(function() {
+            $('.todo-list').removeClass('only-active');
+            $('.todo-list').removeClass('only-complete');
+            $('.todo-nav li.active').removeClass('active');
+            $(this).addClass('active');
+        });
+        
+        $('.todo-nav .active-task').click(function() {
+            $('.todo-list').removeClass('only-complete');
+            $('.todo-list').addClass('only-active');
+            $('.todo-nav li.active').removeClass('active');
+            $(this).addClass('active');
+        });
+        
+        $('.todo-nav .completed-task').click(function() {
+            $('.todo-list').removeClass('only-active');
+            $('.todo-list').addClass('only-complete');
+            $('.todo-nav li.active').removeClass('active');
+            $(this).addClass('active');
+        });
+        
+        $('#uniform-all-complete input').click(function() {
+            if($(this).is(':checked')) {
+                $('.todo-item .checker span:not(.checked) input').click();
+            } else {
+                $('.todo-item .checker span.checked input').click();
+            }
+        });
+        
+        $('.remove-todo-item').click(function() {
+            $(this).parent().remove();
+        });
+        };
+        
+        todo();
+        
+        $(".add-task").keypress(function (e) {
+            if ((e.which == 13)&&(!$(this).val().length == 0)) {
+                $('<div class="todo-item"><div class="checker"><span class=""><input type="checkbox"></span></div> <span>' + $(this).val() + '</span> <a href="javascript:void(0);" class="float-right remove-todo-item"><i class="icon-close"></i></a></div>').insertAfter('.todo-list .todo-item:last-child');
+                $(this).val('');
+            } else if(e.which == 13) {
+                alert('Please enter new task');
+            }
+            $(document).on('.todo-list .todo-item.added input').click(function() {
+                if($(this).is(':checked')) {
+                    $(this).parent().parent().parent().toggleClass('complete');
+                } else {
+                    $(this).parent().parent().parent().toggleClass('complete');
+                }
+            });
+            $('.todo-list .todo-item.added .remove-todo-item').click(function() {
+                $(this).parent().remove();
+            });
+        });
+    });
+    </script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </body>
 </html>
