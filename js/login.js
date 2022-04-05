@@ -87,7 +87,7 @@ function googleSignout() {
    firebase.auth().signOut()
    .then(function() {
       console.log('Signout Succesfull');
-      location.href="/selfHelpApp/index.html";
+      location.href="https://jadenfurtado.github.io/selfHelpApp/";
    }, function(error) {
       console.log('Signout Failed');  
    });
