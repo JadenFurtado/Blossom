@@ -5,121 +5,140 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Profile</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <style>
-            /* styles for the list */
-            
-    .buttonContainer {
-    height: 5vh;
-    position: relative;
-    }
 
-    .center {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    }
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+::selection{
+  color: #ffff;
+  background: rgb(142, 73, 232);
+}
+body{
+  width: 100%;
+  height: 100vh;
+  /* overflow: hidden; */
+}
+.wrapper{
+  background: #fff;
+  max-width: 400px;
+  width: 100%;
+  margin: 120px auto;
+  padding: 25px;
+  border-radius: 5px;
+  box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
+}
+.wrapper header{
+  font-size: 30px;
+  font-weight: 600;
+}
+.wrapper .inputField{
+  margin: 20px 0;
+  width: 100%;
+  display: flex;
+  height: 45px;
+}
+.inputField input{
+  width: 85%;
+  height: 100%;
+  outline: none;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  font-size: 17px;
+  padding-left: 15px;
+  transition: all 0.3s ease;
+}
+.inputField input:focus{
+  border-color: #8E49E8;
+}
+.inputField button{
+  width: 50px;
+  height: 100%;
+  border: none;
+  color: #fff;
+  margin-left: 5px;
+  font-size: 21px;
+  outline: none;
+  background: #1a75ff;
+  cursor: pointer;
+  border-radius: 3px;
+  opacity: 0.6;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+.inputField button:hover,
+.footer button:hover{
+  background: #721ce3;
+}
+.inputField button.active{
+  opacity: 1;
+  pointer-events: auto;
+}
+.wrapper .todoList{
+  max-height: 250px;
+  overflow-y: auto;
+}
+.todoList li{
+  position: relative;
+  list-style: none;
+  margin-bottom: 8px;
+  background: #f2f2f2;
+  border-radius: 3px;
+  padding: 10px 15px;
+  cursor: default;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+.todoList li .icon{
+  position: absolute;
+  right: -45px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #e74c3c;
+  width: 45px;
+  text-align: center;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 0 3px 3px 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.todoList li:hover .icon{
+  right: 0px;
+}
+.wrapper .footer{
+  display: flex;
+  width: 100%;
+  margin-top: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer button{
+  padding: 6px 10px;
+  border-radius: 3px;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-weight: 400;
+  font-size: 16px;
+  margin-left: 5px;
+  background: #8E49E8;
+  cursor: pointer;
+  user-select: none;
+  opacity: 0.6;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+.footer button.active{
+  opacity: 1;
+  pointer-events: auto;
+}
 
-    .todo-nav {
-        margin-top: 10px
-    }
-
-    .todo-list {
-        margin: 10px 0
-    }
-
-    .todo-list .todo-item {
-        padding: 15px;
-        margin: 5px 0;
-        border-radius: 0;
-        background: #f7f7f7
-    }
-
-    .todo-list.only-active .todo-item.complete {
-        display: none
-    }
-
-    .todo-list.only-active .todo-item:not(.complete) {
-        display: block
-    }
-
-    .todo-list.only-complete .todo-item:not(.complete) {
-        display: none
-    }
-
-    .todo-list.only-complete .todo-item.complete {
-        display: block
-    }
-
-    .todo-list .todo-item.complete span {
-        text-decoration: line-through
-    }
-
-    .remove-todo-item {
-        color: #ccc;
-        visibility: hidden
-    }
-
-    .remove-todo-item:hover {
-        color: #5f5f5f
-    }
-
-    .todo-item:hover .remove-todo-item {
-        visibility: visible
-    }
-
-    div.checker {
-        width: 18px;
-        height: 18px
-    }
-
-    div.checker input,
-    div.checker span {
-        width: 18px;
-        height: 18px
-    }
-
-    div.checker span {
-        display: -moz-inline-box;
-        display: inline-block;
-        zoom: 1;
-        text-align: center;
-        background-position: 0 -260px;
-    }
-
-    div.checker, div.checker input, div.checker span {
-        width: 19px;
-        height: 19px;
-    }
-
-    div.checker, div.radio, div.uploader {
-        position: relative;
-    }
-
-    div.button, div.button *, div.checker, div.checker *, div.radio, div.radio *, div.selector, div.selector *, div.uploader, div.uploader * {
-        margin: 0;
-        padding: 0;
-    }
-
-    div.button, div.checker, div.radio, div.selector, div.uploader {
-        display: -moz-inline-box;
-        display: inline-block;
-        zoom: 1;
-        vertical-align: middle;
-    }
-
-    .card {
-        padding: 25px;
-        margin-bottom: 20px;
-        border: initial;
-        background: #fff;
-        border-radius: calc(.15rem - 1px);
-        box-shadow: 0 1px 15px rgba(0,0,0,0.04), 0 1px 6px rgba(0,0,0,0.04);
-    }
-
-
+/* ends here */
     canvas {
     width: 100%;
     height: 100%;
@@ -198,7 +217,7 @@
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <body>
-    
+    <div style="width: 100%;text-align:center;"><a href="#" style="text-align: center;">Drag, scroll or tap the robot</a></div>
     <div class="scene"></div>
     <div style="position: fixed;left: 0;bottom: 0; width: 100%; text-align: center; padding-bottom: 5px;">
         <!-- Default dropup button -->
@@ -218,7 +237,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -229,54 +248,23 @@
                                 <div class="col-md-12">
                                     <div class="card card-white">
                                         <div class="card-body">
-                                            <form action="javascript:void(0);">
-                                                <input type="text" class="form-control add-task" placeholder="New Task...">
-                                                <br>
-                                                <input type="date" class="form-control add-time">
-                                                <br>
-                                                <input type="time" class="form-control">
-                                            </form>
-                                            <ul class="nav nav-pills todo-nav">
-                                                <li role="presentation" class="nav-item all-task active"><a href="#" class="nav-link">All</a></li>
-                                                <li role="presentation" class="nav-item active-task"><a href="#" class="nav-link">Active</a></li>
-                                                <li role="presentation" class="nav-item completed-task"><a href="#" class="nav-link">Completed</a></li>
-                                            </ul>
-                                            <div class="todo-list">
-                                                <div class="todo-item">
-                                                    <div class="checker"><span class=""><input type="checkbox"></span></div>
-                                                    <span>write 10-15 lines in journal</span>
-                                                    <a href="javascript:void(0);" class="float-right remove-todo-item"><i class="icon-close"></i></a>
-                                                </div>
-                                                <div class="todo-item">
-                                                    <div class="checker"><span class=""><input type="checkbox"></span></div>
-                                                    <span>meditate for 10 mins</span>
-                                                    <a href="javascript:void(0);" class="float-right remove-todo-item"><i class="icon-close"></i></a>
-                                                </div>
-                                                
-                                                <div class="todo-item">
-                                                    <div class="checker"><span class=""><input type="checkbox"></span></div>
-                                                    <span>go for a walk/30 mins walk</span>
-                                                    <a href="javascript:void(0);" class="float-right remove-todo-item"><i class="icon-close"></i></a>
-                                                </div>
-                                                <div class="todo-item">
-                                                    <div class="checker"><span><input type="checkbox"></span></div>
-                                                    <span>breating excercises for 5 mins</span>
-                                                    <a href="javascript:void(0);" class="float-right remove-todo-item"><i class="icon-close"></i></a>
-                                                </div>
-                                                <div class="todo-item">
-                                                    <div class="checker"><span><input type="checkbox"></span></div>
-                                                    <span>list goals to be achieved by end of the week</span>
-                                                    <a href="javascript:void(0);" class="float-right remove-todo-item"><i class="icon-close"></i></a>
-                                                </div>
+                                            <div class="inputField form-group row">
+                                                <input type="text" placeholder="Add your new todo" class="form-control">
+                                                <button><i class="fas fa-plus"></i></button>
+                                              </div>
+                                              <ul class="todoList">
+                                                <!-- data are comes from local storage -->
+                                              </ul>
+                                              <div class="footer">
+                                                <span>You have <span class="pendingTasks"></span> pending tasks</span>
+                                                <button>Clear All</button>
+                                              </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -451,79 +439,72 @@ function raycast(e, touch = false) {
     }
 }
     </script>
-    <!-- for the task lists modal -->
-    <script type="text/javascript">
-        $( document ).ready(function() {
-        
-        "use strict";
-        
-        var todo = function() { 
-            $('.todo-list .todo-item input').click(function() {
-            if($(this).is(':checked')) {
-                $(this).parent().parent().parent().toggleClass('complete');
-            } else {
-                $(this).parent().parent().parent().toggleClass('complete');
-            }
-        });
-        
-        $('.todo-nav .all-task').click(function() {
-            $('.todo-list').removeClass('only-active');
-            $('.todo-list').removeClass('only-complete');
-            $('.todo-nav li.active').removeClass('active');
-            $(this).addClass('active');
-        });
-        
-        $('.todo-nav .active-task').click(function() {
-            $('.todo-list').removeClass('only-complete');
-            $('.todo-list').addClass('only-active');
-            $('.todo-nav li.active').removeClass('active');
-            $(this).addClass('active');
-        });
-        
-        $('.todo-nav .completed-task').click(function() {
-            $('.todo-list').removeClass('only-active');
-            $('.todo-list').addClass('only-complete');
-            $('.todo-nav li.active').removeClass('active');
-            $(this).addClass('active');
-        });
-        
-        $('#uniform-all-complete input').click(function() {
-            if($(this).is(':checked')) {
-                $('.todo-item .checker span:not(.checked) input').click();
-            } else {
-                $('.todo-item .checker span.checked input').click();
-            }
-        });
-        
-        $('.remove-todo-item').click(function() {
-            $(this).parent().remove();
-        });
-        };
-        
-        todo();
-        
-        $(".add-task").keypress(function (e) {
-            if ((e.which == 13)&&(!$(this).val().length == 0)) {
-                $('<div class="todo-item"><div class="checker"><span class=""><input type="checkbox"></span></div> <span>' + $(this).val() + '</span> <a href="javascript:void(0);" class="float-right remove-todo-item"><i class="icon-close"></i></a></div>').insertAfter('.todo-list .todo-item:last-child');
-                localStorage.setItem(Date.now(),$(this.val()));
-                $(this).val('');
-            } else if(e.which == 13) {
-                alert('Please enter new task');
-            }
-            $(document).on('.todo-list .todo-item.added input').click(function() {
-                if($(this).is(':checked')) {
-                    $(this).parent().parent().parent().toggleClass('complete');
-                } else {
-                    $(this).parent().parent().parent().toggleClass('complete');
-                }
-            });
-            $('.todo-list .todo-item.added .remove-todo-item').click(function() {
-                $(this).parent().remove();
-            });
-        });
-    });
+
+    <script>
+        // getting all required elements
+const inputBox = document.querySelector(".inputField input");
+const addBtn = document.querySelector(".inputField button");
+const todoList = document.querySelector(".todoList");
+const deleteAllBtn = document.querySelector(".footer button");
+// onkeyup event
+inputBox.onkeyup = ()=>{
+  let userEnteredValue = inputBox.value; //getting user entered value
+  if(userEnteredValue.trim() != 0){ //if the user value isn't only spaces
+    addBtn.classList.add("active"); //active the add button
+  }else{
+    addBtn.classList.remove("active"); //unactive the add button
+  }
+}
+showTasks(); //calling showTask function
+addBtn.onclick = ()=>{ //when user click on plus icon button
+  let userEnteredValue = inputBox.value; //getting input field value
+  let getLocalStorageData = localStorage.getItem("New Todo"); //getting localstorage
+  if(getLocalStorageData == null){ //if localstorage has no data
+    listArray = []; //create a blank array
+  }else{
+    listArray = JSON.parse(getLocalStorageData);  //transforming json string into a js object
+  }
+  listArray.push(userEnteredValue); //pushing or adding new value in array
+  localStorage.setItem("New Todo", JSON.stringify(listArray)); //transforming js object into a json string
+  showTasks(); //calling showTask function
+  addBtn.classList.remove("active"); //unactive the add button once the task added
+}
+function showTasks(){
+  let getLocalStorageData = localStorage.getItem("New Todo");
+  if(getLocalStorageData == null){
+    listArray = [];
+  }else{
+    listArray = JSON.parse(getLocalStorageData); 
+  }
+  const pendingTasksNumb = document.querySelector(".pendingTasks");
+  pendingTasksNumb.textContent = listArray.length; //passing the array length in pendingtask
+  if(listArray.length > 0){ //if array length is greater than 0
+    deleteAllBtn.classList.add("active"); //active the delete button
+  }else{
+    deleteAllBtn.classList.remove("active"); //unactive the delete button
+  }
+  let newLiTag = "";
+  listArray.forEach((element, index) => {
+    newLiTag += `<li>${element}<span class="icon" onclick="deleteTask(${index})"><i class="fas fa-trash"></i></span></li>`;
+  });
+  todoList.innerHTML = newLiTag; //adding new li tag inside ul tag
+  inputBox.value = ""; //once task added leave the input field blank
+}
+// delete task function
+function deleteTask(index){
+  let getLocalStorageData = localStorage.getItem("New Todo");
+  listArray = JSON.parse(getLocalStorageData);
+  listArray.splice(index, 1); //delete or remove the li
+  localStorage.setItem("New Todo", JSON.stringify(listArray));
+  showTasks(); //call the showTasks function
+}
+// delete all tasks function
+deleteAllBtn.onclick = ()=>{
+  listArray = []; //empty the array
+  localStorage.setItem("New Todo", JSON.stringify(listArray)); //set the item in localstorage
+  showTasks(); //call the showTasks function
+}
     </script>
-    
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
     <!-- TODO: Add SDKs for Firebase products that you want to use
@@ -541,7 +522,7 @@ function raycast(e, touch = false) {
 
             } else {
                 alert("please login or signup");
-                location.replace("https://jadenfurtado.github.io/Blossom/");
+                location.replace("https://jadenfurtado.github.io/Blossom/login.html");
             }
         });
     </script>
