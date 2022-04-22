@@ -29,7 +29,7 @@ function writeUserData() {
             alert("user already signed up");
          }
       }else{
-         location.replace("/selfHelpApp/profile.html");
+         location.replace("/Blossom/profile.html");
       }
    });
 }
@@ -87,7 +87,7 @@ function googleSignout() {
    firebase.auth().signOut()
    .then(function() {
       console.log('Signout Succesfull');
-      location.href="https://jadenfurtado.github.io/selfHelpApp/";
+      location.href="https://jadenfurtado.github.io/Blossom/";
    }, function(error) {
       console.log('Signout Failed');  
    });
