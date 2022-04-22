@@ -231,6 +231,10 @@
                                         <div class="card-body">
                                             <form action="javascript:void(0);">
                                                 <input type="text" class="form-control add-task" placeholder="New Task...">
+                                                <br>
+                                                <input type="date" class="form-control add-time">
+                                                <br>
+                                                <input type="time" class="form-control">
                                             </form>
                                             <ul class="nav nav-pills todo-nav">
                                                 <li role="presentation" class="nav-item all-task active"><a href="#" class="nav-link">All</a></li>
@@ -501,6 +505,7 @@ function raycast(e, touch = false) {
         $(".add-task").keypress(function (e) {
             if ((e.which == 13)&&(!$(this).val().length == 0)) {
                 $('<div class="todo-item"><div class="checker"><span class=""><input type="checkbox"></span></div> <span>' + $(this).val() + '</span> <a href="javascript:void(0);" class="float-right remove-todo-item"><i class="icon-close"></i></a></div>').insertAfter('.todo-list .todo-item:last-child');
+                localStorage.setItem(Date.now(),$(this.val()));
                 $(this).val('');
             } else if(e.which == 13) {
                 alert('Please enter new task');

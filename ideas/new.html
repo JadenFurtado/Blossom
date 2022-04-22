@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Profile</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <style>
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+::selection{
+  color: #ffff;
+  background: rgb(142, 73, 232);
+}
+body{
+  width: 100%;
+  height: 100vh;
+  /* overflow: hidden; */
+}
+.wrapper{
+  background: #fff;
+  max-width: 400px;
+  width: 100%;
+  margin: 120px auto;
+  padding: 25px;
+  border-radius: 5px;
+  box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
+}
+.wrapper header{
+  font-size: 30px;
+  font-weight: 600;
+}
+.wrapper .inputField{
+  margin: 20px 0;
+  width: 100%;
+  display: flex;
+  height: 45px;
+}
+.inputField input{
+  width: 85%;
+  height: 100%;
+  outline: none;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  font-size: 17px;
+  padding-left: 15px;
+  transition: all 0.3s ease;
+}
+.inputField input:focus{
+  border-color: #8E49E8;
+}
+.inputField button{
+  width: 50px;
+  height: 100%;
+  border: none;
+  color: #fff;
+  margin-left: 5px;
+  font-size: 21px;
+  outline: none;
+  background: #1a75ff;
+  cursor: pointer;
+  border-radius: 3px;
+  opacity: 0.6;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+.inputField button:hover,
+.footer button:hover{
+  background: #721ce3;
+}
+.inputField button.active{
+  opacity: 1;
+  pointer-events: auto;
+}
+.wrapper .todoList{
+  max-height: 250px;
+  overflow-y: auto;
+}
+.todoList li{
+  position: relative;
+  list-style: none;
+  margin-bottom: 8px;
+  background: #f2f2f2;
+  border-radius: 3px;
+  padding: 10px 15px;
+  cursor: default;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+.todoList li .icon{
+  position: absolute;
+  right: -45px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #e74c3c;
+  width: 45px;
+  text-align: center;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 0 3px 3px 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.todoList li:hover .icon{
+  right: 0px;
+}
+.wrapper .footer{
+  display: flex;
+  width: 100%;
+  margin-top: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer button{
+  padding: 6px 10px;
+  border-radius: 3px;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-weight: 400;
+  font-size: 16px;
+  margin-left: 5px;
+  background: #8E49E8;
+  cursor: pointer;
+  user-select: none;
+  opacity: 0.6;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+.footer button.active{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ends here */
+    canvas {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    }
+    #container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    }
+
+    .spline-watermark {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    z-index: 2;
+    }
+
+    .spline-watermark:hover {
+    opacity: 0.8;
+    }
+
+    .spline-watermark img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    }
+
+    @media screen and (max-width: 780px) {
+    #taskList {
+        background-color: lightgreen;
+        display: none;
+    }
+    }
+
+    * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: sans-serif;
+                overflow: hidden;
+            }
+
+            .scene,
+            canvas {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+            /* end of the styles */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: sans-serif;
+                overflow: hidden;
+            }
+
+            .scene,
+            canvas {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+    </style>
+
+</head>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<body>
+    <div style="width: 100%;text-align:center;"><a href="#" style="text-align: center;">Drag, scroll or tap the robot</a></div>
+    <div class="scene"></div>
+    <div style="position: fixed;left: 0;bottom: 0; width: 100%; text-align: center; padding-bottom: 5px;">
+        <!-- Default dropup button -->
+        <div class="btn-group dropup">
+            <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Options
+            </button>
+            <div class="dropdown-menu">
+            <!-- Dropdown menu links -->
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">My Tasks</a>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModalCenter" data-whatever="@fat">Logout</a>
+            </div>
+        </div>
+        <!-- modal code starts here -->
+        
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" data-backdrop="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card card-white">
+                                        <div class="card-body">
+                                            <div class="inputField form-group row">
+                                                <input type="text" placeholder="Add your new todo" class="form-control">
+                                                <button><i class="fas fa-plus"></i></button>
+                                              </div>
+                                              <ul class="todoList">
+                                                <!-- data are comes from local storage -->
+                                              </ul>
+                                              <div class="footer">
+                                                <span>You have <span class="pendingTasks"></span> pending tasks</span>
+                                                <button>Clear All</button>
+                                              </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" data-backdrop="false" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Logout</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        Do you want to logout?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="googleSignout()">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Split dropup button -
+        <div class="btn-group dropup">
+            <button type="button" class="btn btn-secondary">
+            Split dropup
+            </button>
+            <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="sr-only">Options</span>
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Logout</a>
+            !-- Dropdown menu links --
+            </div>
+        </div>
+        -->
+        </div>
+    <!-- code for the model and three js -->
+    <script src="https://threejs.org/build/three.min.js"></script>
+    <script src="https://threejs.org/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://threejs.org/examples/js/loaders/DRACOLoader.js"></script>
+    <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script>
+
+        //Variables for setup
+
+        let container;
+        let camera;
+        let renderer;
+        let scene;
+        let house;
+        let mixer;
+        let clips;
+        let currentlyAnimating = false;
+        let idle;
+        const clock = new THREE.Clock();
+        var raycaster = new THREE.Raycaster();
+        function init() {
+            container = document.querySelector(".scene");
+
+            //Create scene
+            scene = new THREE.Scene();
+
+            const fov = 35;
+            const aspect = container.clientWidth / container.clientHeight;
+            const near = 1;
+            const far = 10000;
+
+            //Camera setup
+            camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+            camera.position.set(0, 0, 1000);
+
+            const ambient = new THREE.AmbientLight(0x404040, 1);
+            scene.add(ambient);
+
+            const light = new THREE.DirectionalLight(0xffffff, 1);
+            light.position.set(50, 50, 100);
+            scene.add(light);
+
+            //Renderer
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.outputEncoding = THREE.sRGBEncoding;
+            container.appendChild(renderer.domElement);
+
+            const controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.target.set(0, 0.5, 0);
+            controls.update();
+            controls.enablePan = false;
+            controls.enableDamping = true;
+
+            const dracoLoader = new THREE.DRACOLoader();
+            dracoLoader.setDecoderPath('https://threejs.org/examples/js/libs/draco/gltf/');
+            //Load Model
+            let loader = new THREE.GLTFLoader();
+            loader.setDRACOLoader(dracoLoader);
+            loader.load("Breakdancer.glb", function (gltf) {
+                scene.add(gltf.scene);
+                house = gltf.scene.children[0];
+                house.scale.set(15,15,15);
+                house.position.y=-100;
+                console.log(house.position);
+                mixer = new THREE.AnimationMixer(house);
+                mixer.clipAction(gltf.animations[0]).play();
+                clips = gltf.animations;
+                animate();
+            });
+        }
+        // function possibleAnims(){
+        //     let clip = THREE.AnimationClip.findByName(clips, val.name);
+        //     clip = mixer.clipAction(clip);
+        //     return clip;
+        // }
+        function animate() {
+            requestAnimationFrame(animate);
+
+            const delta = clock.getDelta();
+            mixer.update(delta);
+            renderer.render(scene, camera);
+        }
+
+        init();
+
+        function onWindowResize() {
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        }
+
+        window.addEventListener("resize", onWindowResize);
+
+
+        //modified code
+        window.addEventListener('click', e => raycast(e));
+        window.addEventListener('touchend', e => raycast(e, true));
+
+function raycast(e, touch = false) {
+    var mouse = {};
+    if (touch) {
+        mouse.x = 2 * (e.changedTouches[0].clientX / window.innerWidth) - 1;
+        mouse.y = 1 - 2 * (e.changedTouches[0].clientY / window.innerHeight);
+    } else {
+        mouse.x = 2 * (e.clientX / window.innerWidth) - 1;
+        mouse.y = 1 - 2 * (e.clientY / window.innerHeight);
+    }
+  // update the picking ray with the camera and mouse position
+    raycaster.setFromCamera(mouse, camera);
+
+    // calculate objects intersecting the picking ray
+    var intersects = raycaster.intersectObjects(scene.children, true);
+
+    if (intersects[0]) {
+        console.log("intersects");
+        var object = intersects[0].object;
+        if (!currentlyAnimating) {
+                var duration = 1;
+                mixer.clipAction(clips[0]).fadeOut( duration );
+                let number = Math.floor((Math.random() * 10) + 1);
+                number = number%3+1;
+                mixer.clipAction(clips[number]).stop().setEffectiveTimeScale( 1 ).setEffectiveWeight( 1 ).fadeIn( duration ).play();
+        //        let number = Math.floor((Math.random() * 10) + 1);
+                setTimeout(function (){
+                mixer.clipAction(clips[number]).fadeOut( duration );
+                mixer.clipAction(clips[0]).stop().setEffectiveTimeScale( 1 ).setEffectiveWeight( 1 ).fadeIn( duration ).play();
+            }, 4000);
+        }
+    }
+}
+    </script>
+
+    <script>
+        // getting all required elements
+const inputBox = document.querySelector(".inputField input");
+const addBtn = document.querySelector(".inputField button");
+const todoList = document.querySelector(".todoList");
+const deleteAllBtn = document.querySelector(".footer button");
+// onkeyup event
+inputBox.onkeyup = ()=>{
+  let userEnteredValue = inputBox.value; //getting user entered value
+  if(userEnteredValue.trim() != 0){ //if the user value isn't only spaces
+    addBtn.classList.add("active"); //active the add button
+  }else{
+    addBtn.classList.remove("active"); //unactive the add button
+  }
+}
+showTasks(); //calling showTask function
+addBtn.onclick = ()=>{ //when user click on plus icon button
+  let userEnteredValue = inputBox.value; //getting input field value
+  let getLocalStorageData = localStorage.getItem("New Todo"); //getting localstorage
+  if(getLocalStorageData == null){ //if localstorage has no data
+    listArray = []; //create a blank array
+  }else{
+    listArray = JSON.parse(getLocalStorageData);  //transforming json string into a js object
+  }
+  listArray.push(userEnteredValue); //pushing or adding new value in array
+  localStorage.setItem("New Todo", JSON.stringify(listArray)); //transforming js object into a json string
+  showTasks(); //calling showTask function
+  addBtn.classList.remove("active"); //unactive the add button once the task added
+}
+function showTasks(){
+  let getLocalStorageData = localStorage.getItem("New Todo");
+  if(getLocalStorageData == null){
+    listArray = [];
+  }else{
+    listArray = JSON.parse(getLocalStorageData); 
+  }
+  const pendingTasksNumb = document.querySelector(".pendingTasks");
+  pendingTasksNumb.textContent = listArray.length; //passing the array length in pendingtask
+  if(listArray.length > 0){ //if array length is greater than 0
+    deleteAllBtn.classList.add("active"); //active the delete button
+  }else{
+    deleteAllBtn.classList.remove("active"); //unactive the delete button
+  }
+  let newLiTag = "";
+  listArray.forEach((element, index) => {
+    newLiTag += `<li>${element}<span class="icon" onclick="deleteTask(${index})"><i class="fas fa-trash"></i></span></li>`;
+  });
+  todoList.innerHTML = newLiTag; //adding new li tag inside ul tag
+  inputBox.value = ""; //once task added leave the input field blank
+}
+// delete task function
+function deleteTask(index){
+  let getLocalStorageData = localStorage.getItem("New Todo");
+  listArray = JSON.parse(getLocalStorageData);
+  listArray.splice(index, 1); //delete or remove the li
+  localStorage.setItem("New Todo", JSON.stringify(listArray));
+  showTasks(); //call the showTasks function
+}
+// delete all tasks function
+deleteAllBtn.onclick = ()=>{
+  listArray = []; //empty the array
+  localStorage.setItem("New Todo", JSON.stringify(listArray)); //set the item in localstorage
+  showTasks(); //call the showTasks function
+}
+    </script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/login.js"></script>
+    <script>
+        //checks if user is logged in or not
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+
+            } else {
+                alert("please login or signup");
+                location.replace("https://jadenfurtado.github.io/selfHelpApp/");
+            }
+        });
+    </script>
+    <!-- scripts needed for bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>

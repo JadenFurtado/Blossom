@@ -1,84 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    a,
+a:focus,
+a:hover {
+  color: #fff;
+}
 
-    <title>Login</title>
+.btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:focus {
+  color: #333;
+  text-shadow: none;
+  background-color: #fff;
+  border: .05rem solid #fff;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+}
+
+.cover-container {
+  max-width: 42em;
+}
+
+.masthead {
+  margin-bottom: 2rem;
+}
+
+.masthead-brand {
+  margin-bottom: 0;
+}
+
+.nav-masthead .nav-link {
+  padding: .25rem 0;
+  font-weight: 700;
+  color: rgba(255, 255, 255, .5);
+  background-color: transparent;
+  border-bottom: .25rem solid transparent;
+}
+
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+  border-bottom-color: rgba(255, 255, 255, .25);
+}
+
+.nav-masthead .nav-link+.nav-link {
+  margin-left: 1rem;
+}
+
+.nav-masthead .active {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+@media (min-width: 48em) {
+  .masthead-brand {
+    float: left;
+  }
+
+  .nav-masthead {
+    float: right;
+  }
+}
+
+.cover {
+  padding: 0 1.5rem;
+}
+
+.cover .btn-lg {
+  padding: .75rem 1.25rem;
+  font-weight: 700;
+}
+
+.mastfoot {
+  color: rgba(255, 255, 255, .5);
+}
+
+#page {
+  visibility: hidden;
+}
+
+#reveal-effect {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  /* transition: all 5s; */
+}
+
+body {
+  background: #fff;
+}
+
+body.loaded {
+  background-color: #1a75ff;
+  box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
+}
+
+body.loaded #page {
+  visibility: visible;
+}
+
+body.loaded #reveal-effect {
+  opacity: 1;
+}
+
+body.revealed #reveal-effect {
+  display: none;
+}
+
+  </style>
+
 </head>
-<body>
-    <div class="container" id="container">
-        <div class="form-container sign-up-container">
-            <form action="#">
-                <h1>Create Account</h1>
-                <div class="social-container">
-                    <a href="#" class="social" onclick="writeUserData()"><i class="fab fa-google-plus-g"></i>Signup with Google</a>
-                </div>
-            </form>
+<body class="text-center">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/100/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+  <div id="page">
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">Blossom</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link" href="https://jadenfurtado.github.io/selfHelpApp/">Home</a>
+            <a class="nav-link" href="https://jadenfurtado.github.io/selfHelpApp/login.html">Login/Signup</a>
+            <a class="nav-link active" href="/about.html" target="_blank">About</a>
+            <a class="nav-link" href="https://github.com/JadenFurtado" target="_blank">Jaden Furtado</a>
+          </nav>
         </div>
-        <div class="form-container sign-in-container">
-            <form action="#">
-                <h1>Sign in</h1>
-                <div class="social-container">
-                    <a href="#" class="social" onclick="googleSignin()"><i class="fab fa-google-plus-g"></i>Sign in with Google</a>
-                </div>
-            </form>
+      </header>
+      <main role="main" class="inner cover">
+        <h1 class="cover-heading">Blossom</h1>
+        <p class="lead">Its not just another ToDo App</p>
+        <p class="lead" id="trigger">
+          <b>This app:</b>
+          For those who know me, they know that my primary interest in computers lies in Cybersecurity. That being said, I enjoy building things every now and again, and so, I built this app, as an exercise to keep in touch with my coding skills.
+          The primary goal of this application is for a fresh take on a classic To-Do application  while exploring AR and ThreeJs. And yeah, me having a lot of fun!
+        </p>
+      </main>
+      <p class="lead">
+        <b>Testing:</b>
+        This application has been tested by me on chrome for windows and android and on edge for windows and it should work on other browsers too. The robot may take some time to load given how heavy the app currently is, I'm working on improving load time!
+      </p>
+      <p class="lead">
+        <b>Future scope:</b>
+        Because this is a pet project, I have really not done everything I want to do with this app just yet, as I said, its just for fun. I am thinking of adding a description and photos to each task and since it uses firebase, integrating it with Google calendars for automated reminders and above all, making this a PWA! Being a supporter of open source projects, I have open sourced this project.
+        Wanna take a look at the source code or got ideas about features you would like to see in this app? <a class="btn btn-lg btn-secondary" href="https://github.com/JadenFurtado/selfHelpApp">Contribute to the code here</a> 
+      </p>
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>Want to check out other work by me? Find me on  <a  href="https://github.com/JadenFurtado"><u>GitHub</u></a> or catch me on twitter at <a href="https://twitter.com/furtado_jaden" ><u>@furtado_jaden</u></a></p>
+          <p>A fun To-Do Application</p>
         </div>
-        <div class="overlay-container">
-            <div class="overlay">
-                <div class="overlay-panel overlay-left">
-                    <h1>Blossom!</h1>
-                    <p>To keep connected with us please login with your personal info</p>
-                    <button class="ghost" id="signIn">Sign In</button>
-                </div>
-                <div class="overlay-panel overlay-right">
-                    <h1>Let's Blossom!</h1>
-                    <p>Enter your personal details and start journey with us</p>
-                    <button class="ghost" id="signUp">Sign Up</button>
-                </div>
-            </div>
-        </div>
+      </footer>
     </div>
-    
-    <footer>
-       
-    </footer>
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-analytics.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-<script src="js/config.js"></script>
-<script src="js/login.js"></script>
-    <script>
-replaceURL="/selfHelpApp";
+  </div>
 
-firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    alert("already logged in");
-    location.replace(replaceURL+"/profile.html");
-    // ...
-  } else {
-      console.log("logged out");
-   }
-});
+  <canvas id="reveal-effect"></canvas>
+  <script>
+    let renderer, scene, camera, cameraCtrl;
+let width, height, cx, cy, wWidth, wHeight;
+const TMath = THREE.Math;
 
-const signUpButton = document.getElementById('signUp');
-const signInButton = document.getElementById('signIn');
-const container = document.getElementById('container');
+let conf = {
+  color: 0xffffff,
+  objectWidth: 12,
+  objectThickness: 3,
+  ambientColor: 0x808080,
+  light1Color: 0xffffff,
+  shadow: false,
+  perspective: 75,
+  cameraZ: 75,
+};
 
-signUpButton.addEventListener('click', () => {
-	container.classList.add("right-panel-active");
-});
+let objects = [];
+let geometry, material;
+let hMap, hMap0, nx, ny;
 
-signInButton.addEventListener('click', () => {
-	container.classList.remove("right-panel-active");
-});
-    </script>
+init();
+
+function init() {
+  renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('reveal-effect'), antialias: true, alpha: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+
+  camera = new THREE.PerspectiveCamera(conf.perspective, window.innerWidth / window.innerHeight, 0.1, 1000);
+  camera.position.z = conf.cameraZ;
+
+  scene = new THREE.Scene();
+  geometry = new THREE.BoxGeometry(conf.objectWidth, conf.objectWidth, conf.objectThickness);
+
+  window.addEventListener('load', initScene);
+  document.getElementById('trigger').addEventListener('click', initScene);
+
+  animate();
+};
+
+function initScene() {
+  onResize();
+  scene = new THREE.Scene();
+  initLights();
+  initObjects();
+}
+
+function initLights() {
+  scene.add(new THREE.AmbientLight(conf.ambientColor));
+  let light = new THREE.PointLight(0xffffff);
+  light.position.z = 100;
+  scene.add(light);
+}
+
+function initObjects() {
+  objects = [];
+  nx = Math.round(wWidth / conf.objectWidth) + 1;
+  ny = Math.round(wHeight / conf.objectWidth) + 1;
+  let mesh, x, y;
+  for (let i = 0; i < nx; i++) {
+    for (let j = 0; j < ny; j++) {
+      material = new THREE.MeshLambertMaterial({ color: conf.color, transparent: true, opacity: 1 });
+      mesh = new THREE.Mesh(geometry, material);
+      x = -wWidth / 2 + i * conf.objectWidth;
+      y = -wHeight / 2 + j * conf.objectWidth;
+      mesh.position.set(x, y, 0);
+      objects.push(mesh);
+      scene.add(mesh);
+    }
+  }
+  document.body.classList.add('loaded');
+  startAnim();
+}
+
+function startAnim() {
+  document.body.classList.remove('revealed');
+  objects.forEach(mesh => {
+    mesh.rotation.set(0, 0, 0);
+    mesh.material.opacity = 1;
+    mesh.position.z = 0;
+    let delay = TMath.randFloat(1, 2);
+    let rx = TMath.randFloatSpread(2 * Math.PI);
+    let ry = TMath.randFloatSpread(2 * Math.PI);
+    let rz = TMath.randFloatSpread(2 * Math.PI);
+    TweenMax.to(mesh.rotation, 2, { x: rx, y: ry, z: rz, delay: delay });
+    TweenMax.to(mesh.position, 2, { z: 80, delay: delay + 0.5, ease: Power1.easeOut });
+    TweenMax.to(mesh.material, 2, { opacity: 0, delay: delay + 0.5 });
+  });
+  setTimeout(() => {
+    document.body.classList.add('revealed');
+  }, 4500);
+}
+
+function animate() {
+  requestAnimationFrame(animate);
+  renderer.render(scene, camera);
+};
+
+function onResize() {
+  width = window.innerWidth; cx = width / 2;
+  height = window.innerHeight; cy = height / 2;
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
+  renderer.setSize(width, height);
+
+  size = getRendererSize();
+  wWidth = size[0];
+  wHeight = size[1];
+}
+
+function getRendererSize() {
+  const cam = new THREE.PerspectiveCamera(conf.perspective, camera.aspect);
+  const vFOV = cam.fov * Math.PI / 180;
+  const height = 2 * Math.tan(vFOV / 2) * Math.abs(conf.cameraZ);
+  const width = height * cam.aspect;
+  return [width, height];
+}
+
+  </script>
 </body>
 </html>
