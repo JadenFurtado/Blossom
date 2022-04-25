@@ -26,8 +26,6 @@ However, here is how I have structure the application:
 |_js
 
 ```
-
-<br />
 ### Design:
 I have made extensive use of ThreeJs and 
 
