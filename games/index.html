@@ -138,10 +138,9 @@ body.revealed #reveal-effect {
         <div class="inner">
           <h3 class="masthead-brand">Blossom</h3>
           <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link active" href="#">Home</a>
-            <a class="nav-link" href="https://jadenfurtado.github.io/Blossom/login.html">Login/Signup</a>
+            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="https://jadenfurtado.github.io/Blossom/profile.html">To Do</a>
             <a class="nav-link" href="https://jadenfurtado.github.io/Blossom/about.html">About</a>
-            <a class="nav-link" href="https://github.com/JadenFurtado" target="_blank">Jaden Furtado</a>
           </nav>
         </div>
       </header>
@@ -150,13 +149,13 @@ body.revealed #reveal-effect {
         <h1 class="cover-heading">Blossom</h1>
         <p class="lead">Things to make you smile :)</p>
         <p class="lead">
-          <a href="Blossom/games/catAndWool.html" id="trigger" class="btn btn-lg btn-secondary">Cat and wool</a>
+          <a href="https://jadenfurtado.github.io/Blossom/games/catAndWool.html" id="trigger" class="btn btn-lg btn-secondary">Cat and wool</a>
         </p>
         <p class="lead">
-            <a href="Blossom/games/chillTheLion.html" id="trigger" class="btn btn-lg btn-secondary">Chill the lion</a>
+            <a href="https://jadenfurtado.github.io/Blossom/games/chillTheLion.html" id="trigger" class="btn btn-lg btn-secondary">Chill the lion</a>
           </p>
           <p class="lead">
-            <a href="Blossom/games/sneezTheDragon.html" id="trigger" class="btn btn-lg btn-secondary">sneeze the dragon</a>
+            <a href="https://jadenfurtado.github.io/Blossom/games/sneezTheDragon.html" id="trigger" class="btn btn-lg btn-secondary">sneeze the dragon</a>
           </p>
       </main>
 
@@ -287,5 +286,27 @@ function getRendererSize() {
 }
 
   </script>
+
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+<script src="https://jadenfurtado.github.io/Blossom/js/config.js"></script>
+<script src="https://jadenfurtado.github.io/Blossom/js/login.js"></script>
+<script>
+    //checks if user is logged in or not
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+
+        } else {
+            alert("please login or signup");
+            location.replace("https://jadenfurtado.github.io/Blossom/login.html");
+        }
+    });
+</script>
+
 </body>
 </html>
