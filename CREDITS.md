@@ -2,12 +2,6 @@
 
 
  <div id="credits">
-    <p><a href="http://babeltheking.com" target="blank">Babel the king</a> | <a href="https://codepen.io/Yakudoo/"  target="blank">my other codepens</a>  | <a href="https://www.epic.net" target="blank">epic.net</a></p>
-</div>
-<br>
-<div id="credits">
-    <p>Prints on <a class="society6" href="https://society6.com/yakudoo/"  target="blank">society6</a> | <a href="https://codepen.io/Yakudoo/"  target="blank">my other codepens</a> | <a href="https://www.epic.net" target="blank">epic.net</a></p>
-</div>
-<div id="credits">
-  <p>Prints on <a class="society6" href="https://society6.com/yakudoo/"  target="blank">society6</a> | <a href="https://codepen.io/Yakudoo/"  target="blank">my other codepens</a> | <a href="https://www.epic.net" target="blank">epic.net</a></p>
+    <p>Karim Maaloul:
+<a href="http://babeltheking.com" target="blank">Babel the king</a> | <a href="https://codepen.io/Yakudoo/"  target="blank">my other codepens</a>  | <a href="https://www.epic.net" target="blank">epic.net</a></p>
 </div>
