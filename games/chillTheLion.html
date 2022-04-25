@@ -55,10 +55,51 @@
 </head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r70/three.min.js"></script>
 <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/264161/OrbitControls.js"></script>
+
+
+<!-- for bootstrap -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
 <body>
     <div id="world"></div>
 <div id="instructions">Press and drag to make wind<br/><span class="lightInstructions">the lion will surely appreciate</span></div>
 
+<div style="position: fixed;left: 0;bottom: 0; width: 100%; text-align: center; padding-bottom: 5px;">
+  <!-- Default dropup button -->
+  <div class="btn-group dropup">
+      <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Options
+      </button>
+      <div class="dropdown-menu">
+      <!-- Dropdown menu links -->
+          <a class="dropdown-item" href="https://jadenfurtado.github.io/Blossom/games/">Games</a>
+          <a class="dropdown-item" href="https://jadenfurtado.github.io/Blossom/profile.html">My Tasks</a>
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModalCenter" data-whatever="@fat">Logout</a>
+      </div>
+  </div>
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" data-backdrop="false" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Logout</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                Do you want to logout?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="googleSignout()">Logout</button>
+            </div>
+        </div>
+    </div>
+</div>
+  <!-- modal code starts here -->
+  </div>
 
 <script>
     
@@ -781,5 +822,29 @@ function rule3(v,vmin,vmax,tmin, tmax){
 }
 
 </script>
+
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+<script src="https://jadenfurtado.github.io/Blossom/js/config.js"></script>
+<script src="https://jadenfurtado.github.io/Blossom/js/login.js"></script>
+<script>
+    //checks if user is logged in or not
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+
+        } else {
+            alert("please login or signup");
+            location.replace("https://jadenfurtado.github.io/Blossom/login.html");
+        }
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
 </body>
 </html>
