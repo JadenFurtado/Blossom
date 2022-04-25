@@ -1,5 +1,7 @@
 # Blossom
 
+![image](https://user-images.githubusercontent.com/52862591/165040240-9202646e-78aa-48e9-ac84-5e50189a5c00.png)
+
 An application to help you with your daily tasks
 
 ## Table of contents:
