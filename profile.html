@@ -229,7 +229,7 @@ body{
             <!-- Dropdown menu links -->
                 <a class="dropdown-item" href="https://jadenfurtado.github.io/Blossom/games/" >Games</a>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">My Tasks</a>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModalCenter" data-whatever="@fat">Logout</a>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModalCenter" data-whatever="@fat" id="logoutOption">Logout</a>
             </div>
         </div>
         <!-- modal code starts here -->
@@ -520,10 +520,8 @@ deleteAllBtn.onclick = ()=>{
         //checks if user is logged in or not
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-
             } else {
-                alert("please login or signup");
-                location.replace("https://jadenfurtado.github.io/Blossom/login.html");
+                document.getElementById("logoutOption").style.display="none";
             }
         });
     </script>
