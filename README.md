@@ -30,12 +30,15 @@ However, here is how I have structure the application:
 I have made extensive use of ThreeJs and 
 
 ### Demonstration:
+checkout the live site on https://jadenfurtado.github.io/Blossom
 
 ### Technologies-used
 
-### contributing
-
 ### Local Setup and Contribution:
+For setup:
+- Clone the repository locally
+- Change a few of the links in the site (They were hardcoded by me 😅)
+Feel free to open an issue or a PR and I'd love to see what ideas you have for this application!
 
 ### License:
 <a href="https://github.com/JadenFurtado/selfHelpApp/blob/main/LICENSE">The code is under the Creative Commons Zero v1.0 Universal license</a>
@@ -43,3 +46,4 @@ I have made extensive use of ThreeJs and
 ### Authors:
 
 This app was written by me, <a href="https://twitter.com/furtado_jaden">Jaden Furtado</a>
+For certain components that I have used, the credits go to them. The list is <a href="https://github.com/JadenFurtado/Blossom/blob/main/CREDITS.md">here</a>
