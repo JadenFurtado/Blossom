@@ -10,7 +10,7 @@ An application to help you with your daily tasks
 - [Demonstration & Features](#demonstration)
 - [Technologies Used](#technologies-used)
 - [Local Setup & Contributing](#contributing)
-- [License](#license-)
+- [License](#license)
 - [Authors](#authors)
 
 ### architecture and design:
@@ -32,6 +32,10 @@ However, here is how I have structure the application:
 I have made extensive use of ThreeJs and 
 
 ### Demonstration:
+
+### Technologies-used
+
+### contributing
 
 ### Local Setup and Contribution:
 
