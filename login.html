@@ -15,7 +15,7 @@
             <form action="#">
                 <h1>Use without an Account</h1>
                 <div class="social-container">
-                    <a href="https://jadenfurtado.github.io/Blossom/profile.html" class="social">Continue</a>
+                    <a href="https://jadenfurtado.github.io/Blossom/profile.html" class="social" >Continue</a>
                 </div>
             </form>
         </div>
@@ -37,7 +37,7 @@
                 <div class="overlay-panel overlay-right">
                     <h1>Let's Blossom!</h1>
                     <p>Use without an account</p>
-                    <button class="ghost" id="signUp">Continue</button>
+                    <button class="ghost" onclick="goToProfile()">Continue</button>
                 </div>
             </div>
         </div>
@@ -56,29 +56,32 @@
 <script src="js/config.js"></script>
 <script src="js/login.js"></script>
     <script>
-replaceURL="https://jadenfurtado.github.io/Blossom";
+    replaceURL="https://jadenfurtado.github.io/Blossom";
 
-firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    alert("already logged in");
-    location.replace(replaceURL+"/profile.html");
-    // ...
-  } else {
-      console.log("logged out");
-   }
-});
+    firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+        alert("already logged in");
+        location.replace(replaceURL+"/profile.html");
+        // ...
+    } else {
+        console.log("logged out");
+    }
+    });
 
-const signUpButton = document.getElementById('signUp');
-const signInButton = document.getElementById('signIn');
-const container = document.getElementById('container');
+    const signUpButton = document.getElementById('signUp');
+    const signInButton = document.getElementById('signIn');
+    const container = document.getElementById('container');
 
-signUpButton.addEventListener('click', () => {
-	container.classList.add("right-panel-active");
-});
+    signUpButton.addEventListener('click', () => {
+        container.classList.add("right-panel-active");
+    });
 
-signInButton.addEventListener('click', () => {
-	container.classList.remove("right-panel-active");
-});
+    signInButton.addEventListener('click', () => {
+        container.classList.remove("right-panel-active");
+    });
+    function goToProfile(){
+        location.replace(replaceURL+"/profile.html");
+    }
     </script>
 </body>
 </html>

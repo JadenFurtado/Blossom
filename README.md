@@ -97,7 +97,7 @@ Feel free to open an issue or a PR and I'd love to see what ideas you have for t
 I take the security and safety of my application and its users very seriously. Although I have taken every precaution that I could, I realize that there may be a few loopholes that I may have missed. Do please flag them to me should you find any so that they can be patched by me ASAP!
 
 ### Future Scope:
-As mentioned previously, I am planning to integrate this application with Google's suite to have better functionality. I am also planning on releasing a journal in this application for people to take down important notes or write their hearts out. And maybe drawing, pictures and other functionality as and when I get the time to work on them! I decided to release this in it's current form simply because I have achieved my primary objective, i.e. have fun and make something cool. Converting this into a product, that comes later/
+As mentioned previously, I am planning to integrate this application with Google's suite to have better functionality. I am also planning on releasing a journal in this application for people to take down important notes or write their hearts out. And maybe drawing, pictures and other functionality as and when I get the time to work on them! I decided to release this in it's current form simply because I have achieved my primary objective, i.e. have fun and make something cool. Converting this into a product, that comes later.
 
 ### License:
 <a href="https://github.com/JadenFurtado/selfHelpApp/blob/main/LICENSE">The app is under the Creative Commons Zero v1.0 Universal license</a>
