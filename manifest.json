@@ -8,38 +8,38 @@
     "orientation": "portrait-primary",
     "icons": [
       {
-        "src": "/AppImages/ios/72.png",
+        "src": "https://jadenfurtado.github.io/Blossom/AppImages/ios/72.png",
         "type": "image/png", 
         "sizes": "72x72"
       },
       {
-        "src": "/AppImages/android/android-launchericon-96-96.png",
+        "src": "https://jadenfurtado.github.io/Blossom/AppImages/android/android-launchericon-96-96.png",
         "type": "image/png",
         "sizes": "96x96"
       },
       {
-        "src": "/AppImages/ios/128.png",
+        "src": "https://jadenfurtado.github.io/Blossom/AppImages/ios/128.png",
         "type": "image/png",
         "sizes": "128x128"
       },
       {
-        "src": "/AppImages/ios/144.png",
+        "src": "https://jadenfurtado.github.io/Blossom/AppImages/ios/144.png",
         "type": "image/png",
         "sizes": "144x144"
       },
       {
-        "src": "/AppImages/ios/152.png",
+        "src": "https://jadenfurtado.github.io/Blossom/AppImages/ios/152.png",
         "type": "image/png",
         "sizes": "152x152"
       },
       {
-        "src": "/AppImages/maskable_icon_x192.png",
+        "src": "https://jadenfurtado.github.io/Blossom/AppImages/maskable_icon_x192.png",
         "type": "image/png",
         "sizes": "192x192",
         "purpose":"any maskable"
       }, 
       {
-        "src": "/AppImages/ios/512.png",
+        "src": "https://jadenfurtado.github.io/Blossom/AppImages/ios/512.png",
         "type": "image/png",
         "sizes": "512x512"
       }
