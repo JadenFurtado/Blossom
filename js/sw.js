@@ -1,11 +1,11 @@
 const staticCacheName = 'site-static-v1';
 const assets = [
-  'https://jadenfurtado.github.io/',
-  '/index.html',
-  '/js/config.js',
-  '/css/login.css',
-  '/style.css',
-  '/Breakdancer.glb',
+  'https://jadenfurtado.github.io/Blossom',
+  'https://jadenfurtado.github.io/Blossom/index.html',
+  'https://jadenfurtado.github.io/Blossom/js/config.js',
+  'https://jadenfurtado.github.io/Blossom/css/login.css',
+  'https://jadenfurtado.github.io/Blossom/style.css',
+  'https://jadenfurtado.github.io/Blossom/Breakdancer.glb',
   'https://fonts.googleapis.com/css?family=Lato:300,400,700',
 ];
 // install event
