@@ -2,9 +2,10 @@
 
 ![image](https://user-images.githubusercontent.com/52862591/165040240-9202646e-78aa-48e9-ac84-5e50189a5c00.png)
 
-# An application to help you with your daily tasks and help you out with stress
+# An application to help you out with stress
 
 ## Table of contents:
+- [About](#About)
 - [Architecture](#architecture-and-design)
 - [Design](#design)
 - [Demonstration & Features](#demonstration)
@@ -13,9 +14,13 @@
 - [License](#license)
 - [Authors](#authors)
 
+### About:
+
+So, this started as me having fun and exploring AR and three JS. I found that some of the games that I added to this were rather effective in helping me deal with stress and so, I am open-sourcing the code.
+
 ### architecture and design:
 
-Because I have built this for fun and just to explore AR and three JS, following a good structure was not the highest on my list, and so, it is kinda (very) clunky!. 
+As mentioned before, because I have built this for fun and just to explore AR and three JS, following a good structure was not the highest on my list, and so, it is kinda (very) clunky!. 
 <br>
 However, here is how I have structure the application:
 ```
