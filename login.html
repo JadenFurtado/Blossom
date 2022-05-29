@@ -61,7 +61,7 @@
     firebase.auth().onAuthStateChanged((user) => {
     if (user) {
         alert("already logged in");
-        location.replace(replaceURL+"/profile.html");
+        location.replace(replaceURL+"/games");
         // ...
     } else {
         console.log("logged out");
@@ -80,7 +80,7 @@
         container.classList.remove("right-panel-active");
     });
     function goToProfile(){
-        location.replace(replaceURL+"/profile.html");
+        location.replace(replaceURL+"/games");
     }
     </script>
 </body>
