@@ -1,7 +1,6 @@
 const staticCacheName = 'site-static-v1';
 const assets = [
   'https://jadenfurtado.github.io/Blossom',
-  'https://jadenfurtado.github.io/Blossom/index.html',
   'https://jadenfurtado.github.io/Blossom/js/config.js',
   'https://jadenfurtado.github.io/Blossom/css/login.css',
   'https://jadenfurtado.github.io/Blossom/style.css',
